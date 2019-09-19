@@ -26,6 +26,9 @@ class MyReLU(torch.autograd.Function):
         with respect to the output, and we need to compute the gradient of the loss
         with respect to the input.
         """
+        # debug of backward, cf: https://discuss.pytorch.org/t/is-there-a-way-to-debug-the-backward-method-of-function-class/2246
+        # import pdb
+        # pdb.set_trace()
         input, = ctx.saved_tensors
         grad_input = grad_output.clone()
         grad_input[input < 0] = 0
